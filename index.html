@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sre Dhava | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
+    }
+    nav a {
+      margin: 5px 15px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+    }
+    nav a.active {
+      border-bottom: 2px solid #1e40af;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 80px 40px;
+      background-color: #edf2ff;
+    }
+    .hero-text {
+      max-width: 600px;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 10px;
+    }
+    .hero-text h1 span {
+      color: #1e40af;
+    }
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: justify;
+    }
+    .card p {
+      text-align: justify;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-buttons a {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: 2px solid #1e40af;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+    .hero-buttons a.primary {
+      background-color: #1e40af;
+      color: #fff;
+    }
+    .hero-buttons a:not(.primary) {
+      background: transparent;
+      color: #1e40af;
+    }
+    .hero-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(30, 64, 175, 0.2);
+    }
+    .profile-pic {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #1e40af;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+  
+    /* Only show buttons on phones */
+    .mobile-only {
+      display: none;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .badge-list span {
+      display: inline-block;
+      background: #e3eafc;
+      color: #1e40af;
+      padding: 8px 12px;
+      border-radius: 20px;
+      margin: 5px;
+      font-weight: 500;
+    }
+    .skills-bar {
+      background: #e0e0e0;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .skills-bar span {
+      display: block;
+      background: #1e40af;
+      height: 10px;
+    }
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      header, .hero, nav {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .mobile-only {
+        display: flex;
+      }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #about .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    #about .card {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .tab-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .tab-buttons button {
+      background-color: #1e40af;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .tab-buttons button.active {
+      background-color: #0f2e73;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: grid;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 style="color: #1e40af;">Sre Dhava<span style="color: black;">.</span></h1>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <h1>Hello, I’m <span>Sre Dhava</span><br>Inban RR</h1>
+    <p><strong>🎓 Student & Aspiring Professional</strong></p>
+    <p>A passionate learner and creative builder, I’m on a journey to turn bold ideas into real-world impact. With every project, I grow, innovate, and push boundaries — blending curiosity with code and purpose with passion. “Code. Create. Evolve.”</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="primary">Get in Touch</a>
+      <a href="#work">View Projects</a>
+      <a href="resume.pdf" download class="primary">Download CV</a>
+    </div>
+  </div>
+  <img src="./image/sre1.jpg" alt="Profile Image" class="profile-pic">
+</section>
+
+
+<section id="about">
+  <h2>About <span style="color:#1e40af">Me</span></h2>
+  <div class="grid">
+    <div class="card"><h3>Who I Am</h3><p>I am Sre Dhava Inban RR, a highly motivated and dedicated student with a strong interest in technology, software development, and creative innovation. With a mindset for continuous learning, I enjoy exploring new tools and frameworks that help me transform ideas into tangible digital products. My journey has been shaped by self-discipline, passion for coding, and an eagerness to contribute to real-world solutions. I'm always ready to collaborate, adapt, and face challenges with a positive spirit.</p></div>
+    <div class="card"><h3>My Vision</h3><p>My vision is to empower individuals and communities through technology by creating meaningful digital experiences. I aim to be a part of a future where creativity, innovation, and ethics coexist to bring sustainable solutions to global challenges. I see myself leading projects that promote inclusivity, efficiency, and connectivity — all while nurturing a deep respect for learning, collaboration, and societal betterment</p></div>
+    <div class="card"><h3>My Goals</h3><p>🎯 To build scalable and secure software that solves real-world problems.<br>
+      🚀 To master cutting-edge technologies in AI, cloud computing, and full-stack development.<br>
+      🌱 To continue growing personally and professionally through practical experience, peer collaboration, and lifelong learning opportunities.<br>
+      💡 To participate in projects and research that encourage innovation and creativity.</p></div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>My <span style="color:#1e40af">Education</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Bachelor of Computer Technology</h3>
+      <p>Sri Ramakrishna College of Arts and Science<br>2022 - 2025<br>CGPA: 7.5</p>
+    </div>
+    <div class="card">
+      <h3>Higher Secondary</h3>
+      <p>Vigneshwara Vidyalaya Matric HSS<br>Computer Science<br>83%</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>My <span style="color:#1e40af">Skills</span></h2>
+  <div class="grid">
+    <div class="card">
+      <h4>Technical</h4>
+      HTML/CSS <div class="skills-bar"><span style="width:90%"></span></div>
+  JavaScript <div class="skills-bar"><span style="width:75%"></span></div>
+  Python <div class="skills-bar"><span style="width:85%"></span></div>
+  C Programming <div class="skills-bar"><span style="width:80%"></span></div>
+  Java <div class="skills-bar"><span style="width:70%"></span></div>
+  MySQL <div class="skills-bar"><span style="width:85%"></span></div>
+    </div>
+    <div class="card">
+      <h4>Soft Skills</h4>
+      <div class="badge-list">
+        <span>Communication</span><span>Problem Solving</span><span>Teamwork</span>
+        <span>Leadership</span><span>Time Management</span><span>Creativity</span>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Languages</h4>
+     
+  English (95%) <div class="skills-bar"><span style="width:95%"></span></div>
+  Tamil (90%) <div class="skills-bar"><span style="width:90%"></span></div>
+  Hindi (60%) <div class="skills-bar"><span style="width:60%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <h2>My <span style="color:#1e40af">Work</span></h2>
+  <div class="tab-buttons">
+    <button class="active" onclick="switchTab('projects')">Projects</button>
+    <button onclick="switchTab('seminars')">Seminars</button>
+    <button onclick="switchTab('certifications')">Certifications</button>
+  </div>
+
+  <div id="projects" class="grid tab-content active">
+    <div class="card">
+      <h3>Cipher Encryption</h3>
+      <p>Converted plain text into unreadable format using classic encryption techniques.</p>
+    </div>
+    <div class="card">
+      <h3>Password Cracker</h3>
+      <p>Used brute-force, dictionary, and rainbow table techniques to crack hashed passwords.</p>
+    </div>
+  </div>
+
+  <div id="seminars" class="grid tab-content">
+    <div class="card">
+      <h3>Data Integrity</h3>
+      <p>Presented seminar on ensuring accuracy and consistency of stored data systems.</p>
+    </div>
+    <div class="card">
+      <h3>Cybersecurity in IoT</h3>
+      <p>Explored threats and best practices for IoT security.</p>
+    </div>
+  </div>
+
+  <div id="certifications" class="grid tab-content">
+
+  <div class="card">
+    <img src="./img cer/microsoftt.png" alt="Microsoft Machine Learning" style="width:100%; border-radius: 8px; margin-bottom:10px;">
+    <h3>Microsoft Machine Learning Certification</h3>
+    <p>Microsoft, 2024</p>
+    <a href="./certication/Microsoft_MachineLearning.pdf" download class="primary" style="display:inline-block; margin-top:10px; padding:10px 16px; background:#1e40af; color:white; border-radius:6px; text-decoration:none; font-weight:600;">Download Certificate</a>
+  </div>
+
+  <div class="card">
+    <img src="./img cer/ai.png" alt="Artificial Intelligence Foundation" style="width:100%; border-radius: 8px; margin-bottom:10px;">
+    <h3>Artificial Intelligence Foundation Certification</h3>
+    <p>Infosys, 2024</p>
+    <a href="./certication/ai cer.pdf" download class="primary" style="display:inline-block; margin-top:10px; padding:10px 16px; background:#1e40af; color:white; border-radius:6px; text-decoration:none; font-weight:600;">Download Certificate</a>
+  </div>
+
+  <div class="card">
+    <img src="./img cer/learthon.png" alt="Learnthon 2023" style="width:100%; border-radius: 8px; margin-bottom:10px;">
+    <h3>Learnthon Certification</h3>
+    <p>Learnthon, 2023</p>
+    <a href="./certication/learnthon2023.pdf" download class="primary" style="display:inline-block; margin-top:10px; padding:10px 16px; background:#1e40af; color:white; border-radius:6px; text-decoration:none; font-weight:600;">Download Certificate</a>
+  </div>
+
+  <div class="card">
+    <img src="./img cer/oracle.png" alt="Oracle Certification" style="width:100%; border-radius: 8px; margin-bottom:10px;">
+    <h3>Oracle Certification</h3>
+    <p>Oracle, March 2024</p>
+    <a href="./certication/oracle.pdf" download class="primary" style="display:inline-block; margin-top:10px; padding:10px 16px; background:#1e40af; color:white; border-radius:6px; text-decoration:none; font-weight:600;">Download Certificate</a>
+  </div>
+
+</div> <!-- END of certifications grid -->
+
+</section>
+
+<section id="contact">
+  <h2>Get In <span style="color:#1e40af">Touch</span></h2>
+  <div class="grid">
+    <div class="card">
+      <p><strong>Email:</strong> rsredhavainban@outlook.com</p>
+      <p><strong>Phone:</strong> 7010401949</p>
+      <p><strong>Location:</strong> Tiruppur, Tamil Nadu</p>
+      <p><strong>LinkedIn:</strong> <a href="#" target="_blank" style="color:#1e40af;">linkedin.com/in/yourprofile</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/sredhavainban" target="_blank" style="color:#1e40af;">github.com</a></p>
+      <p><strong>Download Resume:</strong> <a href="resume.pdf" download style="color:#1e40af;">Click here</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Sre Dhava Inban RR. All rights reserved.</p>
+</footer>
+
+<script>
+  function switchTab(tabName) {
+    const buttons = document.querySelectorAll(".tab-buttons button");
+    const tabs = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    tabs.forEach(tab => tab.classList.remove("active"));
+
+    // Activate the clicked tab and its content
+    const clickedButton = [...buttons].find(btn => btn.textContent.toLowerCase().includes(tabName));
+    if (clickedButton) clickedButton.classList.add("active");
+
+    document.getElementById(tabName).classList.add("active");
+  }
+
+
+  function switchTab(tabName) {
+    const buttons = document.querySelectorAll(".tab-buttons button");
+    const tabs = document.querySelectorAll(".tab-content");
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    tabs.forEach(tab => tab.classList.remove("active"));
+
+    event.target.classList.add("active");
+    document.getElementById(tabName).classList.add("active");
+  }
+</script>
+
+</body>
+</html>
+
+
+</body>
+</html>
